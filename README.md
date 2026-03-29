@@ -1,5 +1,12 @@
-﻿# OBSClient Module Tests
+# Blazium Engine OBS Client Module Tests
 
-This repository contains the required ATOMIC Game Unit Testing (GUT) coverage scripts natively designed to enforce and guarantee absolute C++ Engine stability scaling specifically the isolated **OBSClient** functionality compiled directly within the standalone [Blazium Engine](https://blazium.app).
+This repository contains [GUT (Godot Unit Test)](https://github.com/bitwes/Gut)-based tests
+that comprehensively validate the functionality of the integrated C++ OBS Client within
+the [Blazium Engine](https://github.com/blazium-games/blazium).
 
-These tests natively execute cross-platform continuous deployment coverage without needing the Editor.
+## Running the Tests
+To execute the tests in a headless environment, use the following command structure against your local Blazium Editor executable:
+
+```bash
+blazium --headless -s addons/gut/gut_cmdln.gd -gdir=res://tests -ginclude_subdirs -gexit
+```
