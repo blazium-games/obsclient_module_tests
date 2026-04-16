@@ -1,4 +1,4 @@
-extends GutTest
+extends AutoworkTest
 
 var input_created = false
 var list_received = false

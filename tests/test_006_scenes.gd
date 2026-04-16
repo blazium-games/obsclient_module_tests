@@ -1,4 +1,4 @@
-extends GutTest
+extends AutoworkTest
 
 var scene_created = false
 var scene_list_received = false

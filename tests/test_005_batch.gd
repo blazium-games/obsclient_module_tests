@@ -1,4 +1,4 @@
-extends GutTest
+extends AutoworkTest
 
 var batch_received = false
 var batch_results = []

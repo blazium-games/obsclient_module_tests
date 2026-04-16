@@ -1,4 +1,4 @@
-extends GutTest
+extends AutoworkTest
 
 var version_received = false
 var version_data = {}

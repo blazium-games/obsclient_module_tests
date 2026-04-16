@@ -1,4 +1,4 @@
-extends GutTest
+extends AutoworkTest
 
 var event_triggered = false
 var event_payload = {}

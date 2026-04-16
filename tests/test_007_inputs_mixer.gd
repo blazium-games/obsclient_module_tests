@@ -1,4 +1,4 @@
-extends GutTest
+extends AutoworkTest
 
 var list_received = false
 var audio_inputs = []
