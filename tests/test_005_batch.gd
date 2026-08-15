@@ -3,10 +3,10 @@ extends AutoworkTest
 var batch_received = false
 var batch_results = []
 
-func before_all():
+func _before_all():
 	pass
 
-func after_all():
+func _after_all():
 	OBSClient.disconnect_from_obs()
 
 func _on_batch(results):
@@ -14,6 +14,9 @@ func _on_batch(results):
 	batch_results = results
 
 func test_005_obs_batch():
+	if OS.get_environment("OBS_LIVE_TESTS") != "1":
+		pending("Requires local OBS WebSocket on ws://127.0.0.1:4455")
+		return
 	OBSClient.connect_to_obs("ws://127.0.0.1:4455", "KXH4ey8f9xVVmBkt")
 	
 	var time_passed = 0.0

@@ -1,12 +1,15 @@
 extends AutoworkTest
 
-func before_all():
+func _before_all():
 	pass
 
-func after_all():
+func _after_all():
 	OBSClient.disconnect_from_obs()
 
 func test_002_obs_auth_missing_password():
+	if OS.get_environment("OBS_LIVE_TESTS") != "1":
+		pending("Requires local OBS WebSocket on ws://127.0.0.1:4455")
+		return
 	var err = OBSClient.connect_to_obs("ws://127.0.0.1:4455", "")
 	assert_eq(err, OK, "Socket connect wrapper fires correctly (since protocol validation happens inside stream polling)")
 	

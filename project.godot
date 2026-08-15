@@ -10,11 +10,16 @@ config_version=5
 
 [application]
 
-config/name="obsclient_module_tests"
+config/name="OBSClient Module Tests"
 config/features=PackedStringArray("4.3.2", "GL Compatibility")
 config/icon="res://icon.svg"
+
 
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+
+[autowork]
+
+run_tests_on_startup=false

@@ -1,12 +1,15 @@
 extends AutoworkTest
 
-func before_all():
+func _before_all():
 	pass
 
-func after_all():
+func _after_all():
 	OBSClient.disconnect_from_obs()
 
 func test_001_obs_connect():
+	if OS.get_environment("OBS_LIVE_TESTS") != "1":
+		pending("Requires local OBS WebSocket on ws://127.0.0.1:4455")
+		return
 	# Test unauthenticated/authenticated depending on your local OBS instance flags
 	# Here we proactively provide the password testing strict websocket binding logic
 	var err = OBSClient.connect_to_obs("ws://127.0.0.1:4455", "KXH4ey8f9xVVmBkt")
