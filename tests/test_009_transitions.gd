@@ -62,4 +62,4 @@ func test_009_obs_transitions():
 		time_passed += 0.01
 		
 	assert_eq(active_transition, "Fade", "Execution correctly locked target transition natively assigning rendering mappings cleanly.")
-	assert_eq(active_duration, 750, "Execution explicitly modified precise rendering duration limits strictly aligning metrics successfully.")
+	assert_eq(active_duration, 750.0, "Execution explicitly modified precise rendering duration limits strictly aligning metrics successfully.")
