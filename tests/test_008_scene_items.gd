@@ -1,4 +1,4 @@
-extends GutTest
+extends AutoworkTest
 
 var input_created = false
 var list_received = false
@@ -6,10 +6,10 @@ var item_list = []
 var enabled_received = false
 var is_enabled = true
 
-func before_all():
+func _before_all():
 	pass
 
-func after_all():
+func _after_all():
 	OBSClient.disconnect_from_obs()
 
 func _on_create_input(status, data):
@@ -27,6 +27,9 @@ func _on_noop(status, data):
 	pass
 
 func test_008_obs_items():
+	if OS.get_environment("OBS_LIVE_TESTS") != "1":
+		pending("Requires local OBS WebSocket on ws://127.0.0.1:4455")
+		return
 	OBSClient.connect_to_obs("ws://127.0.0.1:4455", "KXH4ey8f9xVVmBkt")
 	
 	var time_passed = 0.0

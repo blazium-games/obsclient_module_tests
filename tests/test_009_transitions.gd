@@ -1,4 +1,4 @@
-extends GutTest
+extends AutoworkTest
 
 var initial_transition = ""
 var transitions_received = false
@@ -7,10 +7,10 @@ var active_transition = ""
 var active_duration = 0
 var current_received = false
 
-func before_all():
+func _before_all():
 	pass
 
-func after_all():
+func _after_all():
 	OBSClient.disconnect_from_obs()
 
 func _on_trans_list(status, data):
@@ -23,6 +23,9 @@ func _on_current(status, data):
 	active_duration = data.get("transitionDuration", 0)
 
 func test_009_obs_transitions():
+	if OS.get_environment("OBS_LIVE_TESTS") != "1":
+		pending("Requires local OBS WebSocket on ws://127.0.0.1:4455")
+		return
 	OBSClient.connect_to_obs("ws://127.0.0.1:4455", "KXH4ey8f9xVVmBkt")
 	
 	var time_passed = 0.0

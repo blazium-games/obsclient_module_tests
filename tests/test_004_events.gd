@@ -1,12 +1,12 @@
-extends GutTest
+extends AutoworkTest
 
 var event_triggered = false
 var event_payload = {}
 
-func before_all():
+func _before_all():
 	pass
 
-func after_all():
+func _after_all():
 	OBSClient.disconnect_from_obs()
 
 func _on_event(event_type, event_data):
@@ -15,6 +15,9 @@ func _on_event(event_type, event_data):
 		event_payload = event_data
 
 func test_004_obs_events():
+	if OS.get_environment("OBS_LIVE_TESTS") != "1":
+		pending("Requires local OBS WebSocket on ws://127.0.0.1:4455")
+		return
 	OBSClient.connect_to_obs("ws://127.0.0.1:4455", "KXH4ey8f9xVVmBkt")
 	
 	var time_passed = 0.0
